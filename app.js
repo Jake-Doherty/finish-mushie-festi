@@ -17,7 +17,7 @@ let mushrooms = [{ type: 'porcini' }, { type: 'chanterelle' }, { type: 'morel' }
 let friends = [
     { name: 'Wilbur', satisfied: 0 },
     { name: 'Miss Piggy', satisfied: 0 },
-    { name: 'Pumbaa', satisfied: 3 },
+    { name: 'Pumbaa', satisfied: 0 },
 ];
 
 // static types and probabilities
@@ -88,6 +88,9 @@ sayGoodbyeButton.addEventListener('click', () => {
     for (const friend of friends) {
         // > if the friend is not fully satisfied, push
         // them into the stillHungry array
+        if (friend.satisfied < 3) {
+            stillHungry.push(friend);
+        }
     }
     friends = stillHungry;
     displayFriends();
