@@ -17,7 +17,7 @@ let mushrooms = [{ type: 'porcini' }, { type: 'chanterelle' }, { type: 'morel' }
 let friends = [
     { name: 'Wilbur', satisfied: 0 },
     { name: 'Miss Piggy', satisfied: 0 },
-    { name: 'Pumbaa', satisfied: 0 },
+    { name: 'Pumbaa', satisfied: 3 },
 ];
 
 // static types and probabilities
@@ -126,6 +126,9 @@ function displayFriends() {
                 message = 'No more mushrooms, go hunt for more!';
             }
             // 2. Friend is already fully satisfied (3), set a message to pick another friend
+            else if (friend.satisfied === 3) {
+                message = `${friend.name} is full, pick another friend!`;
+            }
             // 3. Feed friend mushroom:
             // a. "pop" a mushroom off the mushrooms array
             // b. increase friend.satisfied by 1
