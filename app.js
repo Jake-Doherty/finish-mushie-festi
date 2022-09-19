@@ -120,7 +120,6 @@ function displayFriends() {
         friendEl.addEventListener('click', () => {
             // > handle the three possible outcomes:
             // 1. No mushrooms, set a message to go hunt for more
-
             // (!mushrooms.length) - as I understand it, if mushrooms array doesn't contain anything, or "have a length"- do this thing
             if (!mushrooms.length) {
                 message = 'No more mushrooms, go hunt for more!';
@@ -130,11 +129,15 @@ function displayFriends() {
                 message = `${friend.name} is full, pick another friend!`;
             }
             // 3. Feed friend mushroom:
-            // a. "pop" a mushroom off the mushrooms array
-            // b. increase friend.satisfied by 1
-            // c. set a message that the friend enjoyed the mushroom,
-            //    include the friend name and mushroom type in the message
-
+            else {
+                // a. "pop" a mushroom off the mushrooms array
+                const mushroom = mushrooms.pop();
+                // b. increase friend.satisfied by 1
+                friend.satisfied++;
+                // c. set a message that the friend enjoyed the mushroom,
+                //    include the friend name and mushroom type in the message
+                message = `${friend.name} enjoyed the ${mushroom.type} mushroom!`;
+            }
             displayMessage();
             displayMushrooms();
             displayFriends();
