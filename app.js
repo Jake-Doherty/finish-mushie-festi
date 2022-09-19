@@ -74,7 +74,7 @@ addFriendForm.addEventListener('submit', (e) => {
     // > set the message state to let the user know
     // they invited a new friend to the festival, include the friend's
     // name in the message
-    message = `${friend.name} has arrived at the festival!`;
+    message = `${friend.name} accepted your invitation and has arrived at the festival!`;
 
     addFriendForm.reset();
 
@@ -120,6 +120,11 @@ function displayFriends() {
         friendEl.addEventListener('click', () => {
             // > handle the three possible outcomes:
             // 1. No mushrooms, set a message to go hunt for more
+
+            // (!mushrooms.length) - as I understand it, if mushrooms array doesn't contain anything, or "have a length"- do this thing
+            if (!mushrooms.length) {
+                message = 'No more mushrooms, go hunt for more!';
+            }
             // 2. Friend is already fully satisfied (3), set a message to pick another friend
             // 3. Feed friend mushroom:
             // a. "pop" a mushroom off the mushrooms array
